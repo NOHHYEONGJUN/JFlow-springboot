@@ -5,8 +5,8 @@ pipeline {
 
     environment {
         REGISTRY = 'harbor.jdevops.co.kr'
-        HARBOR_PROJECT = 'hyeongjun'
-        IMAGE_NAME = 'spring'
+        HARBOR_PROJECT = 'test'
+        IMAGE_NAME = 'test-spring'
         DOCKER_IMAGE = "${REGISTRY}/${HARBOR_PROJECT}/${IMAGE_NAME}"
         DOCKER_CREDENTIALS_ID = 'harbor-credentials'
         SONAR_TOKEN = credentials('sonarqube-credentials')
@@ -38,8 +38,8 @@ pipeline {
                     withSonarQubeEnv('sonarqube') {
                         sh """
                             sonar-scanner \\
-                            -Dsonar.projectKey=hyeongjun-spring \\
-                            -Dsonar.projectName=hyeongjun-spring \\
+                            -Dsonar.projectKey=test-spring \\
+                            -Dsonar.projectName=test-spring \\
                             -Dsonar.sources=src/main/java/ \\
                             -Dsonar.java.binaries=target/classes/ \\
                             -Dsonar.junit.reportPaths=target/surefire-reports/ \\
